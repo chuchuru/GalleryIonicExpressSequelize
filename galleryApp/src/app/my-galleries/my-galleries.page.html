@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>my-galleries</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor="let b of galleries">
+      <ion-label>
+        <h1>{{b.name}}</h1>
+        <p>{{b.address}}</p>
+        <p>{{b.filename}}</p>
+  
+      </ion-label>
+    </ion-item>
+    
+  </ion-list>
+
+</ion-content>
+
+<ion-content class="fondo">
+  <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+    <ion-fab-button>
+      <ion-icon name="aperture-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="end">
+      <ion-fab-button>
+        <ion-icon name="images-outline" routerLink="/my-pictures"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="home-outline" routerLink="/home"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="color-palette" routerLink="/my-artists"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

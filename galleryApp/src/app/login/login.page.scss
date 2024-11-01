@@ -1,0 +1,50 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .shield-icon {
+    margin-bottom: 20px; /* Espacio entre la imagen y el campo de entrada */
+  }
+  
+  .logo {
+    width: 250px; /* Ajusta el tamaño del logotipo aquí */
+    height: auto; /* Mantiene la proporción de la imagen */
+  }
+  
+  ion-item {
+    position: relative; /* Para posicionar los iconos */
+  }
+  
+  .icon-blue {
+    color: blue; /* Color azul para los iconos */
+    position: absolute; /* Posición absoluta para alinearlos */
+    right: 10px; /* Espacio a la derecha */
+    top: 50%; /* Centrar verticalmente */
+    transform: translateY(-50%); /* Ajustar para centrar perfectamente */
+  }
+  
+  .login-button {
+    background-color: #8a2be2; /* Color lila para el botón */
+    color: white; /* Color de texto del botón */
+  }
+  
+  .error-message {
+    color: red; /* Color rojo para los mensajes de error */
+    font-size: 12px; /* Tamaño de fuente para el mensaje */
+    margin-top: 4px; /* Espacio encima del mensaje */
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center; /* Centrar el texto "Registrarse" */
+    margin-top: 16px; /* Espacio arriba del enlace */
+  }
+  
+  .register-button {
+    text-align: center; /* Asegurar que el texto esté centrado */
+  }
+  

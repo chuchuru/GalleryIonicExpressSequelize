@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>GalleryApp Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="login-container">
+    <div class="shield-icon">
+      <img src="assets/images/logoPortada.png" alt="logotipo de la marca" class="logo">
+    </div>
+
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input 
+          type="email" 
+          [(ngModel)]="email" 
+          name="email" 
+          required
+          #emailInput="ngModel">
+        </ion-input>
+        <ion-icon slot="end" name="mail-outline" class="icon-blue"></ion-icon>
+      </ion-item>
+      <div *ngIf="emailInput.invalid && emailInput.touched" class="error-message">
+        El correo es requerido y debe ser válido.
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input 
+          type="password" 
+          [(ngModel)]="password" 
+          name="password" 
+          required
+          #passwordInput="ngModel">
+        </ion-input>
+        <ion-icon slot="end" name="lock-closed-outline" class="icon-blue"></ion-icon>
+      </ion-item>
+      <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error-message">
+        La contraseña es requerida.
+      </div>
+
+      <ion-button expand="full" type="submit" class="login-button" [disabled]="loginForm.invalid">Login</ion-button>
+    </form>
+
+    <div class="footer-links">
+      <ion-button fill="clear" routerLink="/register" class="register-button">Registrarse</ion-button>
+    </div>
+  </div>
+</ion-content>

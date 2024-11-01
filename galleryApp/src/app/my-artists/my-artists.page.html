@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title style="color: white;">Artistas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Barra de búsqueda -->
+  <ion-searchbar 
+  [(ngModel)]="searchTerm" 
+  (ionInput)="filterArtists()" 
+  placeholder="Buscar artista..." 
+  showCancelButton="focus">
+</ion-searchbar>
+
+  <!-- Lista de Artistas -->
+  <ion-list>
+    <ion-item *ngFor="let b of artists">
+      <ion-label>
+        <ion-avatar slot="start">
+          <img *ngIf="b.filename" src="http://localhost:8080/images/{{b.filename}}" alt="image"/>
+        </ion-avatar>
+        <h1>{{ b.name }}</h1>
+        <h2>{{ b.surnames }}</h2>
+        <p>Fecha de Nacimiento: <br> {{ b.dateBirth }}</p>
+      </ion-label>
+
+      <!-- Botones de acción -->
+      <ion-button fill="clear" color="success" (click)="addArtist()">
+        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+      </ion-button>
+      
+      <ion-button fill="clear" color="primary" (click)="editArtist(b.id)">
+        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-button>
+
+      <ion-button fill="clear" color="danger" (click)="deleteArtist(b.id)">
+        <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- Botón FAB -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+    <ion-fab-button>
+      <ion-icon name="people-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="end">
+      <ion-fab-button routerLink="/my-galleries">
+        <ion-icon name="storefront-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button routerLink="/home">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button routerLink="/my-pictures">
+        <ion-icon name="color-palette"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

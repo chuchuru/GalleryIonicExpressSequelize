@@ -1,0 +1,49 @@
+<ion-app>
+  <ion-split-pane contentId="main">
+    <ion-menu contentId="main" side="start" menuId="first">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item routerLink="/home" routerLinkActive="active">
+            <ion-icon slot="start" name="home-outline" class="icon-dark"></ion-icon>
+            Home
+          </ion-item>
+
+          <!-- Desplegable para About -->
+          <ion-item (click)="toggleAbout()">
+            <ion-icon slot="start" name="information-circle-outline" class="icon-dark"></ion-icon>
+            About
+            <ion-icon slot="end" [name]="isAboutOpen ? 'chevron-up-outline' : 'chevron-down-outline'"></ion-icon>
+          </ion-item>
+
+          <ion-list *ngIf="isAboutOpen">
+            <ion-item>
+              <ion-label>
+                <p>Este proyecto fue realizado por</p>
+                <br>
+                Alejandro G. Guerra Betancor
+                <br>
+                <br>
+                Aplicación FullStack<br>
+                <p>Programación Multimedia y <br>
+                dispositivos Móviles</p>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+
+          <!-- Opción de Cerrar Sesión -->
+          <ion-item (click)="signOut()" routerLinkActive="active" class="sign-out">
+            <ion-icon slot="start" name="log-out-outline" class="icon-red"></ion-icon>
+            Sign Out
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet id="main"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

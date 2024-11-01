@@ -1,0 +1,25 @@
+<ion-header class="color-cabecera-fondo">
+  <ion-toolbar>
+    <ion-title class="color-cabecera">
+      <strong>Gallery</strong>App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-tabs class="color-cabecera-fondo">
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="library" routerLink="/my-pictures">
+      <ion-icon name="images-outline"></ion-icon>
+      Obras de Arte
+    </ion-tab-button>
+    <ion-tab-button tab="radio">
+      <ion-icon name="color-palette" routerLink="/my-artists"></ion-icon>
+      Pintores
+    </ion-tab-button>
+
+    <ion-tab-button tab="search">
+      <ion-icon name="storefront-outline" routerLink="/my-galleries"></ion-icon>
+      Galerias de Arte
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

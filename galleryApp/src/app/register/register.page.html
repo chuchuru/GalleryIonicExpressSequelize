@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>GalleryApp Registrarse</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="register-container">
+    <div class="shield-icon">
+      <img src="assets/images/logoPortada.png" alt="logotipo de la marca" class="logo">
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <!-- Campo de Email -->
+      <ion-item>
+        <ion-label position="floating" for="emailInput">Email</ion-label>
+        <ion-input
+          id="emailInput"
+          name="email"
+          type="email"
+          autocomplete="email"
+          formControlName="email">
+        </ion-input>
+        <ion-icon slot="end" name="mail-outline" class="icon-blue"></ion-icon>
+      </ion-item>
+      <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">
+        El correo es requerido y debe ser válido.
+      </div>
+
+      <!-- Campo de Contraseña -->
+      <ion-item>
+        <ion-label position="floating" for="passwordInput">Contraseña</ion-label>
+        <ion-input
+          id="passwordInput"
+          name="password"
+          type="password"
+          autocomplete="new-password"
+          formControlName="password">
+        </ion-input>
+        <ion-icon slot="end" name="lock-closed-outline" class="icon-blue"></ion-icon>
+      </ion-item>
+      <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">
+        La contraseña es requerida y debe tener más de 5 caracteres.
+      </div>
+
+      <!-- Campo de Confirmación de Contraseña -->
+      <ion-item>
+        <ion-label position="floating" for="confirmPasswordInput">Confirmar Contraseña</ion-label>
+        <ion-input
+          id="confirmPasswordInput"
+          name="confirmPassword"
+          type="password"
+          autocomplete="new-password"
+          formControlName="confirmPassword">
+        </ion-input>
+        <ion-icon slot="end" name="lock-closed-outline" class="icon-blue"></ion-icon>
+      </ion-item>
+      <div *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched" class="error-message">
+        Por favor confirme su contraseña.
+      </div>
+
+      <!-- Campo de Selección de Imagen -->
+      <ion-item>
+        <ion-label for="fileInput">Selecciona una imagen (opcional)</ion-label>
+        <input
+          id="fileInput"
+          name="profileImage"
+          type="file"
+          accept="image/*"
+          (change)="onImageSelected($event)"
+          capture="environment" />
+        <ion-icon slot="end" name="camera-outline" class="icon-blue"></ion-icon>
+      </ion-item>
+
+      <!-- Botón de Registro -->
+      <ion-button expand="full" type="submit" [disabled]="registerForm.invalid">Registrarse</ion-button>
+    </form>
+
+    <!-- Enlace a Login -->
+    <div class="footer-links">
+      <ion-button fill="clear" routerLink="/login" class="login-button">Ya tengo una cuenta</ion-button>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="color: #6a0dad;">Obras de Arte</ion-title> <!-- Cambia el color del texto aquí -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Barra de búsqueda -->
+  <ion-searchbar 
+    [(ngModel)]="searchTerm" 
+    (ionInput)="filterPictures()" 
+    placeholder="Buscar..." 
+    showCancelButton="focus">
+
+  </ion-searchbar>
+
+  <ion-card *ngFor="let b of filteredPictures">
+    <img [src]="b.filename" alt="{{ b.name }}" style="width: 100%; height: auto; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+    
+    <ion-card-header>
+      <ion-card-subtitle style="color: #6a0dad;">Nombre de la Obra</ion-card-subtitle>
+      <ion-card-title size="large" style="color: #6a0dad;">{{ b.name }}</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <p style="font-size: 0.9em;">{{ b.description }}</p>
+    </ion-card-content>
+    
+    <ion-footer>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-icon name="bar-chart-outline" style="font-size: 1.8em; color: #6a0dad;"></ion-icon>
+            <div style="font-size: 1.2em;">{{ b.revalue }}</div>
+          </ion-col>
+          <ion-col class="text-center">
+            <ion-icon name="ribbon-outline" style="font-size: 1.5em; color: #6a0dad;"></ion-icon>
+            <div>
+              <ion-icon name="{{ b.certified ? 'thumbs-up' : 'thumbs-down' }}" style="font-size: 1.2em; color: #6a0dad;"></ion-icon>
+            </div>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="pricetag-outline" style="font-size: 1.8em; color: #6a0dad;"></ion-icon>
+            <div style="font-size: 1.2em;">{{ b.price }}€</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-footer>
+
+    <!-- Botones para Borrar y Modificar -->
+    <ion-button color="danger" (click)="presentConfirm(b.id!)">Borrar</ion-button>
+    <ion-button routerLink="/edit-picture/{{ b.id }}">Modificar</ion-button>
+  </ion-card>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+    <ion-fab-button>
+      <ion-icon name="aperture-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="end">
+      <ion-fab-button routerLink="/my-galleries">
+        <ion-icon name="storefront-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button routerLink="/home">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button routerLink="/my-artists">
+        <ion-icon name="color-palette"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
